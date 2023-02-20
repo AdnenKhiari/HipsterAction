@@ -1,3 +1,4 @@
+[![Application CI](https://github.com/AdnenKhiari/HipsterAction/actions/workflows/main.yml/badge.svg)](https://github.com/AdnenKhiari/HipsterAction/actions/workflows/main.yml)
 # javertest
 
 This application was generated using JHipster 7.9.3, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.3](https://www.jhipster.tech/documentation-archive/v7.9.3).
