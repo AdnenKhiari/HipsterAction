@@ -1,0 +1,319 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-acteur-heading" data-cy="ActeurCreateUpdateHeading" jhiTranslate="javertestApp.acteur.home.createOrEditLabel">
+        Créer ou éditer un Acteur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.verifie" for="field_verifie">Verifie</label>
+          <input type="checkbox" class="form-check" name="verifie" id="field_verifie" data-cy="verifie" formControlName="verifie" />
+          <div *ngIf="editForm.get('verifie')!.invalid && (editForm.get('verifie')!.dirty || editForm.get('verifie')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('verifie')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.loginExpire" for="field_loginExpire">Login Expire</label>
+          <div class="d-flex">
+            <input
+              id="field_loginExpire"
+              data-cy="loginExpire"
+              type="datetime-local"
+              class="form-control"
+              name="loginExpire"
+              formControlName="loginExpire"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('loginExpire')!.invalid && (editForm.get('loginExpire')!.dirty || editForm.get('loginExpire')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('loginExpire')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('loginExpire')?.errors?.datetimelocal"
+              jhiTranslate="entity.validation.datetimelocal"
+            >
+              Ce champ doit être une date et une heure.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+          <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nom')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 2 }"
+            >
+              Ce champ doit faire au minimum 2 caractères.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nom')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 80 }"
+            >
+              Ce champ doit faire moins de 80 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.nomResponsable" for="field_nomResponsable">Nom Responsable</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomResponsable"
+            id="field_nomResponsable"
+            data-cy="nomResponsable"
+            formControlName="nomResponsable"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomResponsable')!.invalid && (editForm.get('nomResponsable')!.dirty || editForm.get('nomResponsable')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomResponsable')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.numTel" for="field_numTel">Num Tel</label>
+          <input type="text" class="form-control" name="numTel" id="field_numTel" data-cy="numTel" formControlName="numTel" />
+          <div *ngIf="editForm.get('numTel')!.invalid && (editForm.get('numTel')!.dirty || editForm.get('numTel')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('numTel')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.addresse" for="field_addresse">Addresse</label>
+          <input type="text" class="form-control" name="addresse" id="field_addresse" data-cy="addresse" formControlName="addresse" />
+          <div *ngIf="editForm.get('addresse')!.invalid && (editForm.get('addresse')!.dirty || editForm.get('addresse')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('addresse')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.matriculeFiscale" for="field_matriculeFiscale"
+            >Matricule Fiscale</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="matriculeFiscale"
+            id="field_matriculeFiscale"
+            data-cy="matriculeFiscale"
+            formControlName="matriculeFiscale"
+          />
+          <div
+            *ngIf="
+              editForm.get('matriculeFiscale')!.invalid &&
+              (editForm.get('matriculeFiscale')!.dirty || editForm.get('matriculeFiscale')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('matriculeFiscale')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.urlRegistreCommerce" for="field_urlRegistreCommerce"
+            >Url Registre Commerce</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="urlRegistreCommerce"
+            id="field_urlRegistreCommerce"
+            data-cy="urlRegistreCommerce"
+            formControlName="urlRegistreCommerce"
+          />
+          <div
+            *ngIf="
+              editForm.get('urlRegistreCommerce')!.invalid &&
+              (editForm.get('urlRegistreCommerce')!.dirty || editForm.get('urlRegistreCommerce')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('urlRegistreCommerce')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.urlProfileImg" for="field_urlProfileImg">Url Profile Img</label>
+          <input
+            type="text"
+            class="form-control"
+            name="urlProfileImg"
+            id="field_urlProfileImg"
+            data-cy="urlProfileImg"
+            formControlName="urlProfileImg"
+          />
+          <div
+            *ngIf="
+              editForm.get('urlProfileImg')!.invalid && (editForm.get('urlProfileImg')!.dirty || editForm.get('urlProfileImg')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('urlProfileImg')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.urlResponsableImg" for="field_urlResponsableImg"
+            >Url Responsable Img</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="urlResponsableImg"
+            id="field_urlResponsableImg"
+            data-cy="urlResponsableImg"
+            formControlName="urlResponsableImg"
+          />
+        </div>
+
+        <div class="row mb-3" *ngIf="editForm.controls.createdBy.value !== null">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.createdBy" for="field_createdBy">Created By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="createdBy"
+            id="field_createdBy"
+            data-cy="createdBy"
+            formControlName="createdBy"
+            [readonly]="true"
+          />
+        </div>
+
+        <div class="row mb-3" *ngIf="editForm.controls.createdDate.value !== null">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+              [readonly]="true"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3" *ngIf="editForm.controls.lastModifiedBy.value !== null">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+            [readonly]="true"
+          />
+        </div>
+
+        <div class="row mb-3" *ngIf="editForm.controls.lastModifiedDate.value !== null">
+          <label class="form-label" jhiTranslate="javertestApp.acteur.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+              [readonly]="true"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

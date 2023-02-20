@@ -1,0 +1,66 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "javertest",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "4.0.0"
+      }
+    ],
+    "buildTool": "gradle",
+    "cacheProvider": "hazelcast",
+    "clientFramework": "no",
+    "clientPackageManager": "npm",
+    "clientTheme": "flatly",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1676835298375,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entities": ["Acteur"],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.9.3",
+    "jwtSecretKey": "MTE0MzU3NDFhZGQ3OWVjZWE5MTUyYmY3NzBlMzQ5OTk4ODRjZDRhNjMyMTMwNzU4YThmMGMzMmZhZTVjZGI4N2FiOWMwODA3MjIxMjg1MzAzOTQ4NDllMTEzZTVlMmRiNDQyNTk3YjI0NDVkY2E4MzFjYmFmMjhiMmM4NGU3MDY=",
+    "languages": ["fr", "ar-ly", "en"],
+    "lastLiquibaseTimestamp": 1676835358000,
+    "messageBroker": false,
+    "microfrontend": false,
+    "microfrontends": [],
+    "nativeLanguage": "fr",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "4.0.0"
+      }
+    ],
+    "packageFolder": "com/mycompany/myapp",
+    "packageName": "com.mycompany.myapp",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": true,
+    "skipFakeData": false,
+    "skipUserManagement": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "javers",
+    "auditPage": true
+  }
+}

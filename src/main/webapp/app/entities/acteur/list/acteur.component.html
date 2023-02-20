@@ -1,0 +1,196 @@
+<div>
+  <h2 id="page-heading" data-cy="ActeurHeading">
+    <span jhiTranslate="javertestApp.acteur.home.title">Acteurs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="javertestApp.acteur.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-acteur"
+        [routerLink]="['/acteur/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="javertestApp.acteur.home.createLabel"> Créer un nouveau Acteur </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="acteurs?.length === 0">
+    <span jhiTranslate="javertestApp.acteur.home.notFound">Aucun Acteur trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="acteurs && acteurs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="verifie">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.verifie">Verifie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="loginExpire">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.loginExpire">Login Expire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.email">Email</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nomResponsable">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.nomResponsable">Nom Responsable</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numTel">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.numTel">Num Tel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="addresse">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.addresse">Addresse</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matriculeFiscale">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.matriculeFiscale">Matricule Fiscale</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="urlRegistreCommerce">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.urlRegistreCommerce">Url Registre Commerce</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="urlProfileImg">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.urlProfileImg">Url Profile Img</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="urlResponsableImg">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.urlResponsableImg">Url Responsable Img</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.lastModifiedBy">Last Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="javertestApp.acteur.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let acteur of acteurs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/acteur', acteur.id, 'view']">{{ acteur.id }}</a>
+          </td>
+          <td>{{ acteur.verifie }}</td>
+          <td>{{ acteur.loginExpire | formatMediumDatetime }}</td>
+          <td>{{ acteur.email }}</td>
+          <td>{{ acteur.nom }}</td>
+          <td>{{ acteur.nomResponsable }}</td>
+          <td>{{ acteur.numTel }}</td>
+          <td>{{ acteur.addresse }}</td>
+          <td>{{ acteur.matriculeFiscale }}</td>
+          <td>{{ acteur.urlRegistreCommerce }}</td>
+          <td>{{ acteur.urlProfileImg }}</td>
+          <td>{{ acteur.urlResponsableImg }}</td>
+          <td>{{ acteur.createdBy }}</td>
+          <td>{{ acteur.createdDate | formatMediumDatetime }}</td>
+          <td>{{ acteur.lastModifiedBy }}</td>
+          <td>{{ acteur.lastModifiedDate | formatMediumDatetime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/acteur', acteur.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/acteur', acteur.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(acteur)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="acteurs && acteurs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

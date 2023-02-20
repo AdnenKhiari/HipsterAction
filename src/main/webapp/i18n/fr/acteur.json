@@ -1,0 +1,38 @@
+{
+  "javertestApp": {
+    "acteur": {
+      "home": {
+        "title": "Acteurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Acteur",
+        "createOrEditLabel": "Créer ou éditer un Acteur",
+        "notFound": "Aucun Acteur trouvé"
+      },
+      "created": "Un nouveau Acteur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Acteur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Acteur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Acteur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Acteur"
+      },
+      "id": "ID",
+      "verifie": "Verifie",
+      "loginExpire": "Login Expire",
+      "email": "Email",
+      "nom": "Nom",
+      "nomResponsable": "Nom Responsable",
+      "numTel": "Num Tel",
+      "addresse": "Addresse",
+      "matriculeFiscale": "Matricule Fiscale",
+      "urlRegistreCommerce": "Url Registre Commerce",
+      "urlProfileImg": "Url Profile Img",
+      "urlResponsableImg": "Url Responsable Img",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

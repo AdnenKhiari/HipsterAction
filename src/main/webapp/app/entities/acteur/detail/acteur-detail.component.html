@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="acteur">
+      <h2 data-cy="acteurDetailsHeading"><span jhiTranslate="javertestApp.acteur.detail.title">Acteur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ acteur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.verifie">Verifie</span></dt>
+        <dd>
+          <span>{{ acteur.verifie }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.loginExpire">Login Expire</span></dt>
+        <dd>
+          <span>{{ acteur.loginExpire | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.email">Email</span></dt>
+        <dd>
+          <span>{{ acteur.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.nom">Nom</span></dt>
+        <dd>
+          <span>{{ acteur.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.nomResponsable">Nom Responsable</span></dt>
+        <dd>
+          <span>{{ acteur.nomResponsable }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.numTel">Num Tel</span></dt>
+        <dd>
+          <span>{{ acteur.numTel }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.addresse">Addresse</span></dt>
+        <dd>
+          <span>{{ acteur.addresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.matriculeFiscale">Matricule Fiscale</span></dt>
+        <dd>
+          <span>{{ acteur.matriculeFiscale }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.urlRegistreCommerce">Url Registre Commerce</span></dt>
+        <dd>
+          <span>{{ acteur.urlRegistreCommerce }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.urlProfileImg">Url Profile Img</span></dt>
+        <dd>
+          <span>{{ acteur.urlProfileImg }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.urlResponsableImg">Url Responsable Img</span></dt>
+        <dd>
+          <span>{{ acteur.urlResponsableImg }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ acteur.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ acteur.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ acteur.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="javertestApp.acteur.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ acteur.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/acteur', acteur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
