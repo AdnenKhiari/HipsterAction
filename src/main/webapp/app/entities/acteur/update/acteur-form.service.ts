@@ -126,8 +126,8 @@ export class ActeurFormService {
       id: null,
       verifie: false,
       loginExpire: currentTime,
-      createdDate: currentTime,
-      lastModifiedDate: currentTime,
+      createdDate: undefined,
+      lastModifiedDate: undefined,
     };
   }
 
@@ -135,8 +135,8 @@ export class ActeurFormService {
     return {
       ...rawActeur,
       loginExpire: dayjs(rawActeur.loginExpire, DATE_TIME_FORMAT),
-      createdDate: dayjs(rawActeur.createdDate, DATE_TIME_FORMAT),
-      lastModifiedDate: dayjs(rawActeur.lastModifiedDate, DATE_TIME_FORMAT),
+      createdDate: undefined,
+      lastModifiedDate: undefined,
     };
   }
 
@@ -146,8 +146,8 @@ export class ActeurFormService {
     return {
       ...acteur,
       loginExpire: acteur.loginExpire ? acteur.loginExpire.format(DATE_TIME_FORMAT) : undefined,
-      createdDate: acteur.createdDate ? acteur.createdDate.format(DATE_TIME_FORMAT) : undefined,
-      lastModifiedDate: acteur.lastModifiedDate ? acteur.lastModifiedDate.format(DATE_TIME_FORMAT) : undefined,
+      createdDate: undefined,
+      lastModifiedDate: undefined,
     };
   }
 }

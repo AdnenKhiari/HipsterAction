@@ -2,7 +2,6 @@ package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.Acteur;
 import org.javers.spring.annotation.JaversSpringDataAuditable;
-import org.javers.spring.annotation.JaversSpringDataAuditable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-@JaversSpringDataAuditable
 @JaversSpringDataAuditable
 public interface ActeurRepository extends JpaRepository<Acteur, Long>, JpaSpecificationExecutor<Acteur> {}
