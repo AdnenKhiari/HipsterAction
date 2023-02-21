@@ -36,4 +36,4 @@ jobs:
       - name: Install node.js packages
         run: npm install
       - name: Build Angular + Spring Boot Server
-        run: npm run java:jar:dev
+        run: 'chmod +x gradlew | npm run java:jar:dev'
