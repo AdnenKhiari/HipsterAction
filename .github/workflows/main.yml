@@ -1,8 +1,5 @@
 name: Application CI
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -44,7 +41,7 @@ jobs:
       - name: Package application
         run: npm run java:jar:prod
       - name: Semantic Versioning
-        run: npm semantic-versioning
+        run: npx semantic-versioning
       - uses: actions/upload-artifact@v3
         with:
           name: Server Jar
